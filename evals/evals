@@ -1,0 +1,29 @@
+{
+  "skill_name": "frontend-de-cria",
+  "evals": [
+    {
+      "id": 1,
+      "name": "redesign-saas-fiscal-sem-quebrar-backend",
+      "prompt": "Este repo é um sistema fiscal Next.js com Supabase. O backend e as regras de emissão já funcionam, mas o dashboard e os formulários estão feios e inconsistentes. Redesenhe tudo que for necessário no frontend sem alterar contratos, auth, RLS ou regras fiscais. Implemente e teste.",
+      "expected_output": "O agente deve mapear fronteiras, preservar lógica, criar direção visual apropriada a software operacional, alterar código de UI, validar browser/mobile e relatar invariantes preservadas. Não deve parar em sugestões."
+    },
+    {
+      "id": 2,
+      "name": "evitar-dashboard-generico",
+      "prompt": "Melhore visualmente este painel React/Tailwind. Ele funciona, mas parece template de IA. Quero algo profissional e próprio para o produto. Não mude a API.",
+      "expected_output": "O agente deve diagnosticar padrões genéricos, entender o domínio, evitar fórmula automática de KPI cards/gradients/pills, implementar design system coerente e verificar o render."
+    },
+    {
+      "id": 3,
+      "name": "repo-misto-ui-e-server-actions",
+      "prompt": "Redesenhe esta área de onboarding em Next.js. A página contém Server Actions, Zod e UI no mesmo fluxo. Pode reorganizar o frontend, mas o comportamento de validação e gravação precisa permanecer idêntico.",
+      "expected_output": "O agente deve classificar arquivos como condicionais, preservar signatures/semântica de validação/efeitos, melhorar UI e testar submissão e estados de erro."
+    },
+    {
+      "id": 4,
+      "name": "responsividade-sem-amputacao",
+      "prompt": "A versão desktop desta tela de gestão tem uma tabela grande, filtros e ações de linha. No celular está quebrada. Torne responsivo sem esconder funções importantes.",
+      "expected_output": "O agente deve adaptar composição, escolher estratégia apropriada para tabela/ações/filtros, manter informação crítica, teclado/touch e verificar viewport mobile real."
+    }
+  ]
+}

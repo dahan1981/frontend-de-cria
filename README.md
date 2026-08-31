@@ -24,15 +24,15 @@ A ideia é simples:
 
 É comum um projeto criado rapidamente chegar a um ponto em que:
 
-- o produto funciona, mas parece protótipo;
-- cada tela usa espaçamentos diferentes;
-- o dashboard parece genérico;
-- tudo virou card;
-- formulários ficaram longos e confusos;
-- responsividade foi tratada como “diminuir tudo”;
-- componentes shadcn foram usados sem uma linguagem visual própria;
-- uma IA sugere um redesign bonito, mas outra IA implementa algo diferente;
-- uma tentativa de “melhorar o frontend” acaba alterando lógica ou quebrando fluxos.
+* o produto funciona, mas parece protótipo;
+* cada tela usa espaçamentos diferentes;
+* o dashboard parece genérico;
+* tudo virou card;
+* formulários ficaram longos e confusos;
+* responsividade foi tratada como “diminuir tudo”;
+* componentes shadcn foram usados sem uma linguagem visual própria;
+* uma IA sugere um redesign bonito, mas outra IA implementa algo diferente;
+* uma tentativa de “melhorar o frontend” acaba alterando lógica ou quebrando fluxos.
 
 O Frontend de Cria existe para evitar isso.
 
@@ -48,16 +48,16 @@ Ele pode mudar layout, hierarquia, composição, tipografia, tokens, componentes
 
 Ele **não pode alterar silenciosamente**:
 
-- regras de negócio;
-- contratos de API;
-- autenticação e autorização;
-- RLS/policies;
-- migrations ou schema de banco;
-- regras fiscais, financeiras ou operacionais;
-- semântica de validações;
-- efeitos colaterais de Server Actions/endpoints;
-- integrações externas;
-- comportamento do produto só para facilitar o redesign.
+* regras de negócio;
+* contratos de API;
+* autenticação e autorização;
+* RLS/policies;
+* migrations ou schema de banco;
+* regras fiscais, financeiras ou operacionais;
+* semântica de validações;
+* efeitos colaterais de Server Actions/endpoints;
+* integrações externas;
+* comportamento do produto só para facilitar o redesign.
 
 Quando um arquivo mistura UI e lógica, a alteração deve ser cirúrgica e comportamentalmente neutra.
 
@@ -91,9 +91,39 @@ frontend-de-cria/
 ├── templates/
 │   ├── AGENTS.project.md
 │   └── PEDIDO-PARA-CODEX.md
+├── docs/
+│   └── DECISOES-DE-ARQUITETURA.md
 └── evals/
     └── evals.json
 ```
+
+### Resolução de caminhos
+
+A pasta oficial de referências é:
+
+```text
+skills/frontend-de-cria/references/
+```
+
+Alguns workflows podem mencionar arquivos de forma abreviada, por exemplo:
+
+```text
+references/01-contexto-e-direcao.md
+references/02-sistema-visual.md
+references/09-qa-visual-e-browser.md
+```
+
+Nesses casos, o agente deve interpretar automaticamente como:
+
+```text
+skills/frontend-de-cria/references/01-contexto-e-direcao.md
+skills/frontend-de-cria/references/02-sistema-visual.md
+skills/frontend-de-cria/references/09-qa-visual-e-browser.md
+```
+
+Sempre que aparecer `references/<arquivo>`, considere `skills/frontend-de-cria/references/<arquivo>` como o caminho real.
+
+Em caso de dúvida, **a estrutura real do repositório é a fonte de verdade**.
 
 ---
 
@@ -154,40 +184,65 @@ Há uma versão mais completa em `templates/PEDIDO-PARA-CODEX.md`.
 
 Antes de editar, mapear:
 
-- framework e versões reais;
-- rotas e layouts;
-- fronteiras client/server;
-- autenticação;
-- integrações e APIs;
-- componentes compartilhados;
-- CSS/Tailwind/design tokens;
-- bibliotecas de UI;
-- páginas críticas;
-- fluxos e estados existentes.
+* framework e versões reais;
+* rotas e layouts;
+* fronteiras client/server;
+* autenticação;
+* integrações e APIs;
+* componentes compartilhados;
+* CSS/Tailwind/design tokens;
+* bibliotecas de UI;
+* páginas críticas;
+* fluxos e estados existentes.
 
 ### 2. Proteger
 
 Separar mentalmente o projeto em:
 
-- **protegido:** lógica, contratos e infraestrutura;
-- **condicional:** arquivos mistos, tipos compartilhados e Server Actions;
-- **livre para redesign:** camada de apresentação.
+* **protegido:** lógica, contratos e infraestrutura;
+* **condicional:** arquivos mistos, tipos compartilhados e Server Actions;
+* **livre para redesign:** camada de apresentação.
 
 ### 3. Projetar
 
 Definir uma direção visual específica para o produto, não “um SaaS bonito” genérico.
 
+O agente deve considerar contexto, usuário, densidade da interface, tarefa principal e identidade existente antes de decidir o estilo.
+
 ### 4. Implementar
 
-O próprio agente implementa suas decisões. Não entregar apenas mockup, plano ou prompt para outro agente.
+O próprio agente implementa suas decisões.
+
+Não entregar apenas:
+
+* mockup;
+* descrição visual;
+* plano;
+* checklist;
+* prompt para outro agente.
+
+Quando houver acesso ao código, o resultado esperado é o frontend implementado.
 
 ### 5. Verificar
 
-Rodar verificações técnicas e abrir o produto no navegador. Revisar desktop, mobile, estados, interação, console e coerência visual.
+Rodar verificações técnicas e abrir o produto no navegador.
+
+Revisar:
+
+* desktop;
+* mobile;
+* estados;
+* interação;
+* console;
+* coerência visual;
+* responsividade;
+* acessibilidade básica.
 
 ### 6. Refinar
 
-A primeira renderização não é considerada final. Corrigir diferenças e pontos visualmente fracos antes de encerrar.
+A primeira renderização não é considerada final.
+
+Depois de visualizar o resultado real, o agente deve corrigir inconsistências, problemas de hierarquia, espaçamento, responsividade e acabamento antes de encerrar.
 
 ---
 
@@ -197,16 +252,73 @@ Uma implementação não está pronta só porque compila.
 
 Ela precisa ser:
 
-- coerente com o contexto do produto;
-- visualmente intencional;
-- funcional;
-- legível;
-- responsiva de verdade;
-- acessível;
-- consistente entre telas;
-- segura em relação à lógica existente;
-- sem aparência óbvia de “dashboard gerado por IA”;
-- verificada no navegador.
+* coerente com o contexto do produto;
+* visualmente intencional;
+* funcional;
+* legível;
+* responsiva de verdade;
+* acessível;
+* consistente entre telas;
+* segura em relação à lógica existente;
+* sem aparência óbvia de “dashboard gerado por IA”;
+* verificada no navegador.
+
+Evite automaticamente:
+
+* excesso de cards;
+* gradientes sem função;
+* glassmorphism genérico;
+* pills em toda parte;
+* sidebar de template;
+* espaçamento exagerado;
+* ícones decorativos sem propósito;
+* componentes shadcn usados sem personalização;
+* transformar tabelas operacionais em cards só para parecer moderno.
+
+O objetivo não é deixar o projeto “bonitinho”.
+
+O objetivo é fazê-lo parecer **um produto profissional pensado especificamente para o contexto em que será usado**.
+
+---
+
+## Referências especializadas
+
+As referências dentro de `skills/frontend-de-cria/references/` complementam a skill principal.
+
+Use conforme a tarefa:
+
+* `01-contexto-e-direcao.md` — contexto, usuário e direção visual;
+* `02-sistema-visual.md` — tokens, tipografia, spacing, superfícies e consistência;
+* `03-redesign-app-existente.md` — redesign sem quebrar produto funcional;
+* `04-react-next-arquitetura.md` — React, Next.js e arquitetura;
+* `05-tailwind-shadcn.md` — Tailwind e shadcn;
+* `06-formularios-e-dados.md` — forms, tabelas, filtros e estados;
+* `07-responsividade-e-acessibilidade.md` — mobile, teclado, semântica e acessibilidade;
+* `08-performance.md` — performance e prevenção de regressões;
+* `09-qa-visual-e-browser.md` — validação no navegador e refinamento;
+* `10-anti-ai-slop.md` — prevenção de interfaces genéricas de IA.
+
+Não é necessário carregar tudo de uma vez. Leia somente o que for relevante para a tarefa atual.
+
+---
+
+## Workflows
+
+Existem três fluxos principais:
+
+### `workflows/redesign-existing-app.md`
+
+Para produtos já funcionais que precisam de redesign ou modernização.
+
+### `workflows/build-from-scratch.md`
+
+Para criação de uma nova interface ou área ainda não consolidada.
+
+### `workflows/frontend-audit.md`
+
+Para revisão e diagnóstico de um frontend existente.
+
+Se o usuário pedir redesign e houver acesso de escrita ao repositório, a auditoria não deve virar o resultado final. Ela é apenas uma etapa antes da implementação.
 
 ---
 
